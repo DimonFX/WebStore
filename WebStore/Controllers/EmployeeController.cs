@@ -7,11 +7,11 @@ using WebStore.Models;
 
 namespace WebStore.Controllers
 {
-    public class HomeController : Controller
+    public class EmployeeController : Controller
     {
         List<EmployeeViewModel> _employeees;
 
-        public HomeController()
+        public EmployeeController()
         {
             _employeees = new List<EmployeeViewModel> {
                 new EmployeeViewModel
