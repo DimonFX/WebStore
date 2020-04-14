@@ -31,7 +31,7 @@ namespace WebStore
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             //ConfigV22(app, env);
 
             ConfigV31(app, env);
