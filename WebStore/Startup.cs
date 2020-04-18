@@ -27,15 +27,16 @@ namespace WebStore
         {
             //services.AddMvc();
             //ќт сюда можно добавить фильтр на все контроллеры и их методы
-            services.AddMvc(option2 =>
+            services.AddMvc(option =>
             {
-                option2.Filters.Add(new SimpleActionFilter());
+                option.Filters.Add(new SimpleActionFilter());
             });
 
             //ƒобавл€ем разрешение зависимостей
             //Ёто означает, что каждый раз, когда мы встречаем интерфейс IEmployeesService в коде нашего приложени€
             //мы автоматически подставл€ем класс InMemoryEmployeeService
-            services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();//Ѕудет жить все врем€ жизни приложени€
+            services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
+            services.AddSingleton<ICarService, InMemoryCarService>();//Ѕудет жить все врем€ жизни приложени€
             //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();//¬рем€ жизни http запроса
             //services.AddTransient<IEmployeesService, InMemoryEmployeeService>();
         }

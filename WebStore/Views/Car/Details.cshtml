@@ -1,4 +1,4 @@
-﻿@model CarModel
+﻿@model CarViewModel
 @{
     Layout = null;
     ViewData["Title"] = "Details";
@@ -6,6 +6,7 @@
 
 <h1>Details</h1>
 
+@Html.ActionLink("Назад к списку", "Index", "Car")
 <table class="table table-bordered">
     <tr>
         <td>Id</td>
@@ -43,9 +44,9 @@
         <td>Объем двигателя</td>
         <td>@Model.EngineVolume</td>
     </tr>
-    <tr>
+    @*<tr>
         <td>@Html.ActionLink("Назад", "Index", "/Car")</td>
-    </tr>
+    </tr>*@
 </table>
 
 

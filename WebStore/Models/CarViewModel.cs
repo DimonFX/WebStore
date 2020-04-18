@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebStore.Models
 {
-    public class CarModel
+    public class CarViewModel
     {
         public int Id { get; set; }
         public string Mark { get; set; }
