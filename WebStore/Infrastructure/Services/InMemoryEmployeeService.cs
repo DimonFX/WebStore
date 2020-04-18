@@ -35,7 +35,8 @@ namespace WebStore.Infrastructure.Services
         }
         public void AddNew(EmployeeViewModel model)
         {
-            model.Id = _employees.Max(e => e.Id) + 1;
+            if(_employees.Count>0) model.Id = _employees.Max(e => e.Id);
+            model.Id +=1;
             _employees.Add(model);
         }
 

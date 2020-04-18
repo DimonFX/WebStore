@@ -25,7 +25,7 @@ namespace WebStore.Controllers
             //return Content("Hello from home controller");
             return View(_employeesService.GetAll());
         }
-        [Route("{id}")]
+        [Route("Details/{id}")]
         // GET: /<users>/{id}
         public IActionResult Details(int id)
         {
@@ -71,27 +71,18 @@ namespace WebStore.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [Route("delete/{id}")]
         [HttpPost]
         // GET: /<users>/{id}
         public IActionResult Delete(EmployeeViewModel model)
         {
-            if (model.Id > 0) // если есть Id, то редактируем модель
-            {
-                var dbItem = _employeesService.GetById(model.Id);
+            var dbItem = _employeesService.GetById(model.Id);
 
-                if (ReferenceEquals(dbItem, null))
-                    return NotFound();// возвращаем результат 404 Not Found
+            if (ReferenceEquals(dbItem, null))
+                return NotFound();// возвращаем результат 404 Not Found
 
-                dbItem.FirstName = model.FirstName;
-                dbItem.SurName = model.SurName;
-                dbItem.Age = model.Age;
-                dbItem.Patronymic = model.Patronymic;
-                dbItem.Position = model.Position;
-            }
-            else // иначе добавляем модель в список
-            {
-                _employeesService.AddNew(model);
-            }
+            _employeesService.Delete(dbItem.Id);
             _employeesService.Commit(); // станет актуальным позднее (когда добавим БД)
 
             return RedirectToAction(nameof(Index));

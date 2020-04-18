@@ -7,7 +7,6 @@
 
 <h1>Hello from my first view</h1>
 <a asp-action="Edit" class="btn btn-success">Добавить</a>
-<a asp-action="Add" class="btn btn-success">Удалить</a>
 <table class="table">
     @foreach (var item in Model)
     {
@@ -16,6 +15,13 @@
             <a asp-action="Edit" asp-route-id="@item.Id">
                 <i class="fa fa-edit"></i>
             </a>
+        </td>
+        <td>
+            <form method="post">
+                <button type="submit" asp-action="delete" asp-route-id="@item.Id">
+                    Удалить
+                </button>
+            </form>
         </td>
         <td>@item.FirstName</td>
         <td>@item.SurName</td>
