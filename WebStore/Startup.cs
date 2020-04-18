@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.Infrastructure;
 
 namespace WebStore
 {
@@ -22,7 +23,12 @@ namespace WebStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            //services.AddMvc();
+            //От сюда можно добавить фильтр на все контроллеры и их методы
+            services.AddMvc(option2 =>
+            {
+                option2.Filters.Add(new SimpleActionFilter());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,7 +42,7 @@ namespace WebStore
 
             app.Map("/Index", CustomIndexHandler);
 
-            app.UseMiddleware<Infrastructure.TokenMiddleWare>();
+            app.UseMiddleware<Infrastructure.TokenMiddleware>();
 
             UseSampleErrorCheck(app);
 
@@ -86,6 +92,21 @@ namespace WebStore
 
             var helloMsg = _configuration["CustomHelloWorld"];
             helloMsg = _configuration["Logging:LogLevel:Default"];
+            #region пример сокращенной метода для настройки маршрутизации по умолчанию:
+            //app.UseMvcWithDefaultRoute();
+            /* Этот метод повторяет то что описано ниже:
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                // GET: /<controller>/details/{id}
+
+                //endpoints.MapGet("/", async context => { await context.Response.WriteAsync(helloMsg); });
+            });
+             */
+            #endregion
+
 
             app.UseEndpoints(endpoints =>
             {

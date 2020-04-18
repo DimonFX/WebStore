@@ -6,21 +6,23 @@ using System.Threading.Tasks;
 
 namespace WebStore.Infrastructure
 {
-    public class TokenMiddleWare
+    public class TokenMiddleware
     {
         private const string correctToken = "qwerty123";
+
         public RequestDelegate Next { get; }
 
-        public TokenMiddleWare(RequestDelegate next)
+        //ctor
+        public TokenMiddleware(RequestDelegate next)
         {
             Next = next;
         }
 
-        private async Task InvokeAsync(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             var token = context.Request.Query["referenceToken"];
 
-            //если нет токена, то ничего не делаем, передаем запрос дальше по конвейеру
+            // если нет токена, то ничего не делаем, передаем запрос дальше по конвейеру
             if (string.IsNullOrEmpty(token))
             {
                 await Next.Invoke(context);
@@ -28,14 +30,13 @@ namespace WebStore.Infrastructure
             }
             if (token == correctToken)
             {
-                //Обрабатываем токен...
+                // обрабатываем токен...
                 await Next.Invoke(context);
             }
             else
             {
                 await context.Response.WriteAsync("Token is incorrect");
             }
-
         }
 
     }

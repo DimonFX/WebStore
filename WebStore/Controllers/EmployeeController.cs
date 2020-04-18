@@ -7,6 +7,7 @@ using WebStore.Models;
 
 namespace WebStore.Controllers
 {
+    [Route("users")]
     public class EmployeeController : Controller
     {
         List<EmployeeViewModel> _employeees;
@@ -35,14 +36,15 @@ namespace WebStore.Controllers
             };
         }
 
-        // GET: /<controller>/
+        [Route("all")]
+        // GET: /users/all
         public IActionResult Index()
         {
             //return Content("Hello from home controller");
             return View(_employeees);
         }
-
-        // GET: /<controller>/details/{id}
+        [Route("{id}")]
+        // GET: /<users>/{id}
         public IActionResult Details(int id)
         {
             return View(_employeees.FirstOrDefault(x => x.Id == id));
