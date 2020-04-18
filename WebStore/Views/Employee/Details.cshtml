@@ -8,7 +8,7 @@
 
 @*@Html.DisplayForModel()*@
 @*@Html.EditorForModel()*@
-
+@Html.ActionLink("Назад к списку", "Index", "Employee")
 <table class="table table-bordered">
     <tr>
         <td>Id</td>
@@ -34,7 +34,8 @@
         <td>Должность</td>
         <td>@Model.Position</td>
     </tr>
-    <tr>
+    @*<tr>
+
         <td>@Html.ActionLink("Назад", "Index", "/Home")</td>
-    </tr>
+    </tr>*@
 </table>

@@ -35,7 +35,9 @@ namespace WebStore
             //Добавляем разрешение зависимостей
             //Это означает, что каждый раз, когда мы встречаем интерфейс IEmployeesService в коде нашего приложения
             //мы автоматически подставляем класс InMemoryEmployeeService
-            services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
+            services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();//Будет жить все время жизни приложения
+            //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();//Время жизни http запроса
+            //services.AddTransient<IEmployeesService, InMemoryEmployeeService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
