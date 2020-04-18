@@ -39,10 +39,10 @@ namespace WebStore.Controllers
         {
             return View();
         }
-        public IActionResult NotFound()
-        {
-            return View();
-        }
+        //public IActionResult NotFound()
+        //{
+        //    return View();
+        //}
         public IActionResult ProductDetails()
         {
             return View();

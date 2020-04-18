@@ -30,11 +30,54 @@ namespace WebStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseBrowserLink();
             }
             app.UseStaticFiles();
+
+            app.Map("/Index", CustomIndexHandler);
+
+            app.UseMiddleware<Infrastructure.TokenMiddleWare>();
+
+            UseSampleErrorCheck(app);
+
             //ConfigV22(app, env);
 
             ConfigV31(app, env);
+
+            RunSample(app); 
+        }
+
+        private void UseSampleErrorCheck(IApplicationBuilder app)
+        {
+            app.Use(async (context, next) =>
+            {
+                bool isError = false;
+                //...
+                if (isError)
+                {
+                    await context.Response.WriteAsync("Error occured. You're in custom pipeline module...");
+                }
+                else
+                {
+                    await next.Invoke();
+                }
+            });
+        }
+
+        private void RunSample(IApplicationBuilder obj)
+        {
+            obj.Run(async context =>
+            {
+                await context.Response.WriteAsync("Привет из конвеера обрадотки запросоа (метод app.Run()");
+            });
+        }
+
+        private void CustomIndexHandler(IApplicationBuilder obj)
+        {
+            obj.Run(async context =>
+            {
+                await context.Response.WriteAsync("Index");
+            });
         }
 
         private void ConfigV31(IApplicationBuilder app, IWebHostEnvironment env)
