@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebStore.Infrastructure;
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Services;
 
 namespace WebStore
 {
@@ -29,6 +31,11 @@ namespace WebStore
             {
                 option2.Filters.Add(new SimpleActionFilter());
             });
+
+            //Добавляем разрешение зависимостей
+            //Это означает, что каждый раз, когда мы встречаем интерфейс IEmployeesService в коде нашего приложения
+            //мы автоматически подставляем класс InMemoryEmployeeService
+            services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

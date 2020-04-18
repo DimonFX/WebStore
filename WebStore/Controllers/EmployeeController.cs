@@ -4,36 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
-
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Services;
 namespace WebStore.Controllers
 {
     [Route("users")]
     public class EmployeeController : Controller
     {
-        List<EmployeeViewModel> _employeees;
+        private readonly IEmployeesService _employeesService;
 
-        public EmployeeController()
+        public EmployeeController(IEmployeesService employeesService)
         {
-            _employeees = new List<EmployeeViewModel> {
-                new EmployeeViewModel
-                {
-                    Id = 1,
-                    FirstName = "Иван",
-                    SurName = "Иванов",
-                    Patronymic = "Иванович",
-                    Age = 22,
-                    Position = "Начальник"
-                },
-                new EmployeeViewModel
-                {
-                    Id = 2,
-                    FirstName = "Владислав",
-                    SurName = "Петров",
-                    Patronymic = "Иванович",
-                    Age = 35,
-                    Position = "Программист"
-                }
-            };
+            this._employeesService = employeesService;
         }
 
         [Route("all")]
@@ -41,13 +23,13 @@ namespace WebStore.Controllers
         public IActionResult Index()
         {
             //return Content("Hello from home controller");
-            return View(_employeees);
+            return View(_employeesService.GetAll());
         }
         [Route("{id}")]
         // GET: /<users>/{id}
         public IActionResult Details(int id)
         {
-            return View(_employeees.FirstOrDefault(x => x.Id == id));
+            return View(_employeesService.GetById(id);
         }
     }
 }
