@@ -22,7 +22,7 @@ namespace WebStore.Infrastructure.Services
                     Drive= "Передний",
                     EngineVolume = 1.6,
                     Mark = "Nissan",
-                    Model = "Almera",
+                    CarModel = "Almera",
                     Transmission = "МКПП",
                     YearRelease = 2018
                 },
@@ -34,7 +34,7 @@ namespace WebStore.Infrastructure.Services
                     Drive= "Задний",
                     EngineVolume = 1.6,
                     Mark = "ВАЗ 2107",
-                    Model = "LADA",
+                    CarModel = "LADA",
                     Transmission = "МКПП",
                     YearRelease = 2004
                 }

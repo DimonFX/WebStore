@@ -9,7 +9,7 @@ namespace WebStore.Models
     {
         public int Id { get; set; }
         public string Mark { get; set; }
-        public string Model { get; set; }
+        public string CarModel { get; set; }
         /// <summary>
         /// Тип кузова
         /// </summary>

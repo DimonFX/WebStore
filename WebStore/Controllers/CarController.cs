@@ -60,7 +60,7 @@ namespace WebStore.Controllers
                 dbItem.Drive = model2.Drive;
                 dbItem.EngineVolume = model2.EngineVolume;
                 dbItem.Mark = model2.Mark;
-                dbItem.Model = model2.Model;
+                dbItem.CarModel = model2.CarModel;
                 dbItem.Transmission = model2.Transmission;
                 dbItem.YearRelease = model2.YearRelease;
 
