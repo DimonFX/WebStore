@@ -49,11 +49,12 @@ namespace WebStore
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
+
             app.UseStaticFiles();
 
-            app.Map("/Index", CustomIndexHandler);
+            app.Map("/index", CustomIndexHandler);
 
-            app.UseMiddleware<Infrastructure.TokenMiddleware>();
+            app.UseMiddleware<TokenMiddleware>();
 
             UseSampleErrorCheck(app);
 
@@ -61,7 +62,9 @@ namespace WebStore
 
             ConfigV31(app, env);
 
-            RunSample(app); 
+            app.UseWelcomePage("/welcome");
+
+            RunSample(app);
         }
 
         private void UseSampleErrorCheck(IApplicationBuilder app)
@@ -69,10 +72,11 @@ namespace WebStore
             app.Use(async (context, next) =>
             {
                 bool isError = false;
-                //...
+                // ...
                 if (isError)
                 {
-                    await context.Response.WriteAsync("Error occured. You're in custom pipeline module...");
+                    await context.Response
+                        .WriteAsync("Error occured. You're in custom pipeline module...");
                 }
                 else
                 {

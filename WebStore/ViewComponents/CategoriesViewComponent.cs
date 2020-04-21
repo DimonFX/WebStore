@@ -8,12 +8,12 @@ using WebStore.Models;
 
 namespace WebStore.ViewComponents
 {
-    [ViewComponent(Name = "Categories")]
-    public class CategoriesViewComponents: ViewComponent
+    //[ViewComponent(Name = "Categories")]
+    public class CategoriesViewComponent: ViewComponent
     {
         private readonly IProductService _productService;
 
-        public CategoriesViewComponents(IProductService productService)
+        public CategoriesViewComponent(IProductService productService)
         {
             this._productService = productService;
         }
