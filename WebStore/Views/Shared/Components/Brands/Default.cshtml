@@ -1,0 +1,15 @@
+﻿@model List<BrandViewModel>
+
+<h2>Brands</h2>
+<div class="brands-name">
+    <ul class="nav nav-pills nav-stacked">
+        @foreach (var item in Model)
+        {
+            <a asp-controller="Catalog" asp-action="Shop" asp-route-brandId="@item.Id">
+                <li>
+                    <span class="pull-right">@item.CountProducts</span>
+                </li>@item.Name
+            </a>
+        }
+    </ul>
+</div>
