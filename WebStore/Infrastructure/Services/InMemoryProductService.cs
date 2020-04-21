@@ -273,6 +273,7 @@ namespace WebStore.Infrastructure.Services
                     Order = 6
                 },
             };
+             
         }
 
         public IEnumerable<Category> GetCategories()
