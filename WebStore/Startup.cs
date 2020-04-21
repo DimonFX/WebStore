@@ -37,6 +37,7 @@ namespace WebStore
             //мы автоматически подставл€ем класс InMemoryEmployeeService
             services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
             services.AddSingleton<ICarService, InMemoryCarService>();//Ѕудет жить все врем€ жизни приложени€
+            services.AddSingleton<IProductService, InMemoryProductService>();
             //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();//¬рем€ жизни http запроса
             //services.AddTransient<IEmployeesService, InMemoryEmployeeService>();
         }
