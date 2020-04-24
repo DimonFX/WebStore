@@ -14,11 +14,17 @@ namespace WebStore.DomainNew.Entities
         public int? BrandId { get; set; }
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
+        /// <summary>
+        /// Гарантийный период в днях
+        /// </summary>
+        public int countDaysGaranty { get; set; }
+
+
         //[ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
-        public string Manufactured { get; set; }
         [ForeignKey("BrandId")]
         public virtual Brand Brand { get; set; }
+
 
 
     }
