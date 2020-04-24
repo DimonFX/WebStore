@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
-using WebStore.Domain.Entities.Base.Interface;
+using WebStore.DomainNew.Entities.Base.Interface;
 
-namespace WebStore.Domain.Entities.Base
+namespace WebStore.DomainNew.Entities.Base
 {
     public class BaseEntity : IBaseEntity
     {
+        [Key]
         public int Id { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace WebStore.ViewComponents
         private List<BrandViewModel> GetBrands()
         {
             var brands = _productService.GetBrands();
-            var query = _productService.GetProducts(new Domain.ProductFilter())
+            var query = _productService.GetProducts(new DomainNew.ProductFilter())
                 .GroupBy(x => x.BrandId);
             // получим и заполним родительские категории
             //var parentSections = brands.Where(p => !p.ParentId.HasValue).ToArray();

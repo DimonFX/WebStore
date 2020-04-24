@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WebStore.Domain.Entities.Base.Interface;
+using WebStore.DomainNew.Entities.Base.Interface;
 
-namespace WebStore.Domain.Entities
+namespace WebStore.DomainNew.Entities
 {
     public interface INamedEntity: IBaseEntity
     {
