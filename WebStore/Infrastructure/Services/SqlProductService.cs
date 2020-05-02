@@ -27,6 +27,11 @@ namespace WebStore.Infrastructure.Services
             return _context.Categories.ToList();
         }
 
+        public Product GetProductById(int id)
+        {
+            return _context.Products.FirstOrDefault(x=>x.Id==id);
+        }
+
         public IEnumerable<Product> GetProducts(ProductFilter filter)
         {
             var query = _context.Products.AsQueryable();

@@ -313,7 +313,7 @@ namespace Web.Store.DAL
                     Id = 1,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product1.jpg",
+                    ImageUrl = "product7.jpg",
                     Order = 0,
                     CategoryId = 2,
                     BrandId = 1
@@ -323,7 +323,7 @@ namespace Web.Store.DAL
                     Id = 2,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product2.jpg",
+                    ImageUrl = "product8.jpg",
                     Order = 1,
                     CategoryId = 2,
                     BrandId = 1
@@ -333,7 +333,7 @@ namespace Web.Store.DAL
                     Id = 3,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product3.jpg",
+                    ImageUrl = "product9.jpg",
                     Order = 2,
                     CategoryId = 2,
                     BrandId = 1
@@ -343,7 +343,7 @@ namespace Web.Store.DAL
                     Id = 4,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product4.jpg",
+                    ImageUrl = "product7.jpg",
                     Order = 3,
                     CategoryId = 2,
                     BrandId = 1
@@ -353,7 +353,7 @@ namespace Web.Store.DAL
                     Id = 5,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product5.jpg",
+                    ImageUrl = "product8.jpg",
                     Order = 4,
                     CategoryId = 2,
                     BrandId = 2
@@ -363,7 +363,7 @@ namespace Web.Store.DAL
                     Id = 6,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product6.jpg",
+                    ImageUrl = "product9.jpg",
                     Order = 5,
                     CategoryId = 2,
                     BrandId = 2
@@ -373,7 +373,7 @@ namespace Web.Store.DAL
                     Id = 7,
                     Name = "Easy Polo Black Edition",
                     Price = 1025,
-                    ImageUrl = "product7.jpg",
+                    ImageUrl = "product10.jpg",
                     Order = 6,
                     CategoryId = 2,
                     BrandId = 2

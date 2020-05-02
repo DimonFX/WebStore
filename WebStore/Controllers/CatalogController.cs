@@ -32,17 +32,51 @@ namespace WebStore.Controllers
                     ImageUrl = p.ImageUrl,
                     Name = p.Name,
                     Order = p.Order,
-                    Price = p.Price
+                    Price = p.Price,
+                    BrandName = p.Brand?.Name ?? string.Empty
                 }).OrderBy(p => p.Order)
                     .ToList()
             };
 
             return View(model);
         }
+        //public IActionResult ProductDetails()
+        //{
+        //    var curProduc = _productService.GetProducts(new ProductFilter()).FirstOrDefault();
+        //    if (curProduc == null)
+        //        return NotFound();
+        //    var model = new ProductViewModel()
+        //    {
+        //        Id = curProduc.Id,
+        //        Name = curProduc.Name,
+        //        ImageUrl = curProduc.ImageUrl,
+        //        Order = curProduc.Order,
+        //        Price = curProduc.Price,
+        //        BrandName = curProduc.Brand?.Name ?? string.Empty
+        //    };
 
-        public IActionResult ProductDetails()
+        //    return View(model);
+        //}
+        public IActionResult ProductDetails(int id)
         {
-            return View();
+
+            var curProduc = _productService.GetProductById(id);
+
+            if (curProduc == null)
+                curProduc = _productService.GetProducts(new ProductFilter()).FirstOrDefault();//Заглушка из меню
+            if (curProduc == null)
+                return NotFound();
+            var model = new ProductViewModel()
+            {
+                Id = curProduc.Id,
+                Name = curProduc.Name,
+                ImageUrl = curProduc.ImageUrl,
+                Order = curProduc.Order,
+                Price = curProduc.Price,
+                BrandName = curProduc.Brand?.Name ?? string.Empty
+            };
+
+            return View(model);
         }
     }
 }

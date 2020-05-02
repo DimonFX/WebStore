@@ -18,7 +18,7 @@ namespace WebStore.Controllers
         public IActionResult GetFile()
         {
             string file_path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/image/15.jpg");
-            string file_type = "inage/jpeg";
+            string file_type = "image/jpeg";
             //Имя файла - необязательно
             string file_name = "My awesome ring.jpg";
             return File(file_path, file_type, file_name);
