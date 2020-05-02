@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using WebStore.Models;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
+
 namespace WebStore.Controllers
 {
     [Route("users")]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private readonly IEmployeesService _employeesService;
@@ -19,6 +22,7 @@ namespace WebStore.Controllers
         }
 
         [Route("all")]
+        [AllowAnonymous]//Доступ к этому методу доступен для всех!
         // GET: /users/all
         public IActionResult Index()
         {
@@ -26,6 +30,7 @@ namespace WebStore.Controllers
             return View(_employeesService.GetAll());
         }
         [Route("Details/{id}")]
+        [Authorize(Roles = "Admins,Users")]
         // GET: /<users>/{id}
         public IActionResult Details(int id)
         {
@@ -33,6 +38,7 @@ namespace WebStore.Controllers
         }
         [Route("edit/{id?}")]
         [HttpGet]
+        [Authorize(Roles ="Admins") ]
         // GET: /<users>/{id}
         public IActionResult Edit(int? id)
         {
@@ -47,6 +53,7 @@ namespace WebStore.Controllers
         }
         [Route("edit/{id?}")]
         [HttpPost]
+        [Authorize(Roles = "Admins")]
         // GET: /<users>/{id}
         public IActionResult Edit(EmployeeViewModel model)
         {
@@ -83,6 +90,7 @@ namespace WebStore.Controllers
 
         [Route("delete/{id}")]
         [HttpPost]
+        [Authorize(Roles = "Admins")]
         // GET: /<users>/{id}
         public IActionResult Delete(EmployeeViewModel model)
         {

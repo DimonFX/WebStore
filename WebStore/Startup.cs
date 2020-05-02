@@ -88,17 +88,15 @@ namespace WebStore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
 
             app.UseStaticFiles();
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.Map("/index", CustomIndexHandler);
-
-            app.UseMiddleware<TokenMiddleware>();
 
             app.UseMiddleware<TokenMiddleware>();
 
@@ -110,7 +108,7 @@ namespace WebStore
 
             app.UseWelcomePage("/welcome");
 
-            RunSample(app);
+            //RunSample(app);
         }
 
         private void UseSampleErrorCheck(IApplicationBuilder app)
@@ -149,8 +147,6 @@ namespace WebStore
 
         private void ConfigV31(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
-
             var helloMsg = _configuration["CustomHelloWorld"];
             helloMsg = _configuration["Logging:LogLevel:Default"];
             #region пример сокращенной метода для настройки маршрутизации по умолчанию:
