@@ -79,6 +79,7 @@ namespace WebStore
             services.AddSingleton<IEmployeesService, InMemoryEmployeeService>();
             services.AddSingleton<ICarService, InMemoryCarService>();//Будет жить все время жизни приложения
             services.AddScoped<IProductService, SqlProductService>();
+            services.AddScoped<IOrderService, SqlOrdersService>();
             //services.AddScoped<IEmployeesService, InMemoryEmployeeService>();//Время жизни http запроса
             //services.AddTransient<IEmployeesService, InMemoryEmployeeService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
