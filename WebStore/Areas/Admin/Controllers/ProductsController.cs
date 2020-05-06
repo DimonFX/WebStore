@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +12,6 @@ using WebStore.DomainNew.Entities;
 namespace WebStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admins")]
     public class ProductsController : Controller
     {
         private readonly WebStoreContext _context;
@@ -62,7 +61,7 @@ namespace WebStore.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Order,CategoryId,BrandId,ImageUrl,Price,countDaysGaranty,Name,Id")] Product product)
+        public async Task<IActionResult> Create([Bind("Order,CategoryId,BrandId,ImageUrl,Image,Price,countDaysGaranty,Name,Id")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -72,6 +71,7 @@ namespace WebStore.Areas.Admin.Controllers
             }
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            //ViewData["Image"] = product.Image;
             return View(product);
         }
 
@@ -90,6 +90,7 @@ namespace WebStore.Areas.Admin.Controllers
             }
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            //ViewData["Image"] = product.Image;
             return View(product);
         }
 
@@ -98,13 +99,24 @@ namespace WebStore.Areas.Admin.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Order,CategoryId,BrandId,ImageUrl,Price,countDaysGaranty,Name,Id")] Product product)
+        public async Task<IActionResult> Edit(int id, Product product)// [Bind("Order,CategoryId,BrandId,ImageUrl,Image,Price,countDaysGaranty,Name,Id")]
         {
             if (id != product.Id)
             {
                 return NotFound();
             }
-
+            //if (product.Image != null)
+            //{
+            //    byte[] imageData = null;
+            //    // считываем переданный файл в массив байтов
+            //    using (var binaryReader = new BinaryReader(product.Image.OpenReadStream()))
+            //    {
+            //        imageData = binaryReader.ReadBytes((int)product.Image.Length);
+            //    }
+            //    // установка массива байтов
+            //    product.Image = imageData;
+            //}
+            //product.Image =(byte[]) ViewData["Image"];
             if (ModelState.IsValid)
             {
                 try
@@ -127,6 +139,7 @@ namespace WebStore.Areas.Admin.Controllers
             }
             ViewData["BrandId"] = new SelectList(_context.Brands, "Id", "Id", product.BrandId);
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
+            //ViewData["Image"] = product.Image;
             return View(product);
         }
 
