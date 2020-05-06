@@ -13,7 +13,6 @@ namespace WebStore.DomainNew.Entities
         public int CategoryId { get; set; }
         public int? BrandId { get; set; }
         public string ImageUrl { get; set; }
-        public byte[] Image { get; set; }
         public decimal Price { get; set; }
         /// <summary>
         /// Гарантийный период в днях
