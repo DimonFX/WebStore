@@ -33,7 +33,7 @@ namespace WebStore.Controllers
                     Name = p.Name,
                     Order = p.Order,
                     Price = p.Price,
-                    BrandName = p.Brand?.Name ?? string.Empty
+                    Brand = p.Brand?.Name ?? string.Empty
                 }).OrderBy(p => p.Order)
                     .ToList()
             };
@@ -73,7 +73,7 @@ namespace WebStore.Controllers
                 ImageUrl = curProduc.ImageUrl,
                 Order = curProduc.Order,
                 Price = curProduc.Price,
-                BrandName = curProduc.Brand?.Name ?? string.Empty
+                Brand = curProduc.Brand?.Name ?? string.Empty
             };
 
             return View(model);

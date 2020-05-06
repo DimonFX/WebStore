@@ -168,7 +168,7 @@ namespace WebStore.Infrastructure.Services
                 Name = p.Name,
                 Order = p.Order,
                 Price = p.Price,
-                BrandName = p.Brand != null ? p.Brand.Name : string.Empty
+                Brand = p.Brand != null ? p.Brand.Name : string.Empty
             }).ToList();
 
             var r = new CartViewModel

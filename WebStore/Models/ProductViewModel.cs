@@ -14,6 +14,6 @@ namespace WebStore.Models
         public int Order { get; set; }
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
-        public string BrandName { get; set; }
+        public string Brand { get; set; }
     }
 }
